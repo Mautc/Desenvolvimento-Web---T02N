@@ -11,11 +11,29 @@ body {
     line-height: 1.6;
 }
 
+/* --- ESTRUTURA MACRO (CSS GRID) --- */
+.grid-container {
+    display: grid;
+    /* Define o tamanho das duas colunas (conteúdo principal maior que a sidebar) */
+    grid-template-columns: 2.5fr 1fr; 
+    /* Mapeia onde cada elemento vai ficar */
+    grid-template-areas: 
+        "header header"
+        "main aside"
+        "footer footer";
+    gap: 30px; /* Espaçamento entre os elementos do grid */
+    max-width: 1100px;
+    margin: 0 auto; /* Centraliza o contêiner na tela */
+    padding: 0 20px;
+}
+
 header {
+    grid-area: header;
     background-color: #1a252f;
     color: #ffffff;
     padding: 30px 20px;
     text-align: center;
+    border-radius: 0 0 8px 8px; /* Detalhe visual opcional */
 }
 
 header h1 {
@@ -23,11 +41,13 @@ header h1 {
     font-size: 2.2em;
 }
 
+/* --- ESTRUTURA INTERNA DA NAVEGAÇÃO (FLEXBOX) --- */
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
-    gap: 25px;
+    justify-content: center; /* Centraliza os itens */
+    gap: 25px; /* Espaça os links igualmente */
+    flex-wrap: wrap; /* Permite que os links quebrem de linha se a tela for muito pequena */
 }
 
 nav a {
@@ -44,12 +64,7 @@ nav a:hover {
 }
 
 main {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+    grid-area: main;
 }
 
 article {
@@ -101,11 +116,13 @@ article figcaption {
 }
 
 aside {
+    grid-area: aside;
     background-color: #ffffff;
     padding: 30px;
     border-radius: 8px;
     border-left: 5px solid #3498db;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    align-self: start; /* Impede que a sidebar estique acompanhando a altura do artigo */
 }
 
 aside h3 {
@@ -134,9 +151,35 @@ aside a:hover {
 }
 
 footer {
+    grid-area: footer;
     background-color: #1a252f;
     color: #bdc3c7;
     text-align: center;
     padding: 20px;
-    margin-top: 40px;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 20px;
+}
+
+/* --- RESPONSIVIDADE (MEDIA QUERIES) --- */
+/* Ponto de quebra em 768px (Tablets e Celulares) */
+@media (max-width: 768px) {
+    .grid-container {
+        /* Desfaz o grid de 2 colunas e cria 1 única coluna */
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "header"
+            "main"
+            "aside"
+            "footer";
+        gap: 20px; /* Reduz o espaçamento geral para mobile */
+        padding: 0 10px;
+    }
+
+    article {
+        padding: 20px; /* Reduz o padding interno do post no celular */
+    }
+
+    article h2 {
+        font-size: 1.8em; /* Ajusta o tamanho da fonte do título */
+    }
 }
