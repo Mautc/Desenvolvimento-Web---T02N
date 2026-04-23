@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #f4f4f9;
+  margin: 0;
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background: #fdfdfd;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.2s;
+}
+
+li:hover {
+  background: #ffeaea;
+}
+
+li.completed .task-text {
+  text-decoration: line-through;
+  color: #888;
+}
+
+li.completed {
+  background: #e9ecef;
+}
+
+.task-text {
+  flex: 1;
+}
+
+.remove-btn {
+  padding: 5px 10px;
+  background-color: #dc3545;
+  font-size: 13px;
+}
+
+.remove-btn:hover {
+  background-color: #c82333;
+}
+
+.titulo-tarefa {
+  font-size: 50px;
+  color: black;
+}
